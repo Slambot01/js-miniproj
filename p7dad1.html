@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .container {
+        background-color: aliceblue;
+      }
+    </style>
+    <div class="container">
+      <h1>Wlc to DAD jokes</h1>
+      <section class="api_body"></section>
+      <button id="fetchjk">Get another joke</button>
+    </div>
+    <script>
+      const fetchJKButton = document.getElementById("fetchjk");
+      const apiBody = document.querySelector(".api_body");
+      // const apiUrl="https://jsonpalceholder.typicode.com/posts/1";
+      const apiUrl = "https://icanhazdadjoke.com/";
+
+      const fetchData = () => {
+        fetch(apiUrl, {
+          headers: {
+            Accept: "application/json",
+          },
+        })
+          .then((res) => {
+            console.log(res);
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data.joke);
+            apiBody.innerHTML = data.joke;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
+
+      fetchJKButton.addEventListener("click", fetchData);
+
+      fetchData();
+    </script>
+  </body>
+</html>

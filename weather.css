@@ -1,0 +1,230 @@
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.weather_header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.weather_search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.weather_search input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.weather_body {
+    text-align: center;
+}
+
+.weather_body h1 {
+    margin: 0;
+}
+
+.weather_data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.weather_data p {
+    margin: 0;
+}
+
+.weather_data img {
+    width: 50px;
+    height: 50px;
+}
+
+.weather_minmax {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.weather_info {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.weather_card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.weather_card i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.weather_card p {
+    margin: 0;
+} */
+/* Global styles */
+
+
+  
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 400px;
+    background-color: #e0e9f1; /* Light bluish background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.weather_header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.weather_search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather_search i {
+    font-size: 1.2em;
+    margin-right: 10px;
+    color: #3498db; /* Blue color for icon */
+}
+
+.city_name {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+.weather_body {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.weather_city {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #2c3e50; /* Darker text color */
+}
+
+.weather_date_time {
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.weather_data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.weather_forecast {
+    font-size: 1.2em;
+    margin-right: 10px;
+    color: #2980b9; /* Blue color for weather forecast */
+}
+
+.weather_icon img {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.weather_temperature {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #2c3e50; /* Darker text color */
+}
+
+.weather_minmax {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.weather_min, .weather_max {
+    font-size: 1em;
+    color: #888;
+}
+
+.weather_info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.weather_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    padding: 10px;
+    background-color: #dfe6ed; /* Lighter bluish background for cards */
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.weather_card i {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    color: #2980b9; /* Blue color for card icons */
+}
+
+.weather_card p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.weather_feelslike, .weather_humidity, .weather_wind, .weather_pressure {
+    font-size: 1.2em;
+}

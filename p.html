@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Weather App</h1>
+        <section class="api_body"></section>
+    </div>
+    <section class="container">
+        <div class="weather_header">
+            <form class="weather_search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="city_name" placeholder="Search city..." />
+            </form>
+        </div>
+        <div class="weather_body">
+            <h1 class="weather_city"></h1>
+            <p class="weather_date_time"></p>
+            <div class="weather_data">
+                <p class="weather_forecast"></p>
+                <div class="weather_icon"></div>
+            </div>
+            <p class="weather_temperature"></p>
+            <div class="weather_minmax">
+                <p class="weather_min"></p>
+                <p class="weather_max"></p>
+            </div>
+        </div>
+        <section class="weather_info">
+            <div>
+                <div class="weather_card">
+                    <i class="fa-solid fa-cloud"></i>
+                </div>
+                <div>
+                    <p>Feels like</p>
+                    <p class="weather_feelslike">30&#176</p>
+                </div>
+            </div>
+            <div>
+                <div class="weather_card">
+                    <i class="fa-solid fa-droplet"></i>
+                </div>
+                <div>
+                    <p>Humidity</p>
+                    <p class="weather_humidity">30&#176</p>
+                </div>
+            </div>
+            <div>
+                <div class="weather_card">
+                    <i class="fa-solid fa-wind"></i>
+                </div>
+                <div>
+                    <p>Wind</p>
+                    <p class="weather_wind">30&#176</p>
+                </div>
+            </div>
+            <div>
+                <div class="weather_card">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+                <div>
+                    <p>Pressure</p>
+                    <p class="weather_pressure">30&#176</p>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script>
+        let cityName = document.querySelector(".weather_city");
+        let dateTime = document.querySelector(".weather_date_time");
+        let w_forecast = document.querySelector(".weather_forecast");
+        let w_temperature = document.querySelector(".weather_temperature");
+        let w_icon = document.querySelector(".weather_icon");
+        let w_minTem = document.querySelector(".weather_min");
+        let w_maxTem = document.querySelector(".weather_max");
+
+        let w_feelsLike = document.querySelector(".weather_feelslike");
+        let w_humidity = document.querySelector(".weather_humidity");
+        let w_wind = document.querySelector(".weather_wind");
+        let w_pressure = document.querySelector(".weather_pressure");
+        let citySearch = document.querySelector(".weather_search");
+
+        const getCountryName = (code) => {
+            return new Intl.DisplayNames(['en'], { type: "region" }).of(code);
+        };
+
+        const getDateTime = (dt) => {
+            const curDate = new Date(dt * 1000);
+            console.log(curDate);
+
+            const options = {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+            };
+            const formatter = new Intl.DateTimeFormat("en-US", options);
+
+            return formatter.format(curDate);
+        };
+
+        let city = "pune";
+        citySearch.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let cityNameInput = document.querySelector(".city_name");
+            console.log(cityNameInput.value);
+            city = cityNameInput.value;
+            getWeatherData();
+            cityNameInput.value = null;
+        });
+
+        const getWeatherData = async () => {
+            const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=8f476cd45946613064b8600b7f5d8a6e&units=metric`;
+            try {
+                const res = await fetch(weatherUrl);
+                const data = await res.json();
+
+                const { main, name, weather, wind, sys, dt } = data;
+
+                cityName.innerHTML = `${name}, ${getCountryName(sys.country)}`;
+                dateTime.innerHTML = getDateTime(dt);
+
+                w_forecast.innerHTML = weather[0].main;
+                w_icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${weather[0].icon}@4x.png" alt="${weather[0].description}"/>`;
+
+                w_temperature.innerHTML = `${main.temp}&#176;C`;
+                w_minTem.innerHTML = `Min: ${main.temp_min.toFixed(1)}&#176;C`;
+                w_maxTem.innerHTML = `Max: ${main.temp_max.toFixed(1)}&#176;C`;
+
+                w_feelsLike.innerHTML = `${main.feels_like.toFixed(2)}&#176;C`;
+                w_humidity.innerHTML = `${main.humidity}%`;
+                w_wind.innerHTML = `${data.wind.speed} m/s`;
+                w_pressure.innerHTML = `${data.main.pressure} hPa`;
+
+                console.log(data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", getWeatherData);
+    </script>
+</body>
+
+</html>

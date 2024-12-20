@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Number Table</h1>
+    <section class="mainbody"></section>
+
+    <script>
+
+
+        const createData = (symbol, atomicNumber, name) => {
+            const element = document.createElement("div");
+            element.classList.add
+                ("element");
+            element.innerHTML = symbol;
+element.setAttribute("atomic-number",atomicNumber);
+element.setAttribute("element-name",name);
+            return element;
+        }
+
+        function workingProcess() {
+
+            const mainBody = document.querySelector(".mainbody");
+
+            for (let i = 0; i < 60; i++) {
+                const element = createData(`Elem${i}`, i, `Element ${i}`);
+                element.innerText = i;
+                mainBody.append(element);
+            }
+            mainBody.addEventListener("click", (e) => {
+                alert(e.target.innerText);
+            });
+        }
+
+        workingProcess();
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+//<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Number Table</h1>
+    <section class="mainbody"></section>
+
+    <script>
+        const createData = (symbol, atomicNumber, name) => {
+            const element = document.createElement("div");
+            element.classList.add("element");
+            element.innerHTML = symbol;
+            element.setAttribute("atomic-number", atomicNumber);
+            element.setAttribute("element-name", name);
+            return element;
+        }
+
+        function workingProcess() {
+            const mainBody = document.querySelector(".mainbody");
+
+            for (let i = 0; i < 60; i++) {
+                const element = createData(`Elem${i}`, i, `Element ${i}`);
+                mainBody.append(element);
+            }
+
+            mainBody.addEventListener("click", (e) => {
+                alert(e.target.innerText);
+            });
+        }
+
+        workingProcess();
+    </script>
+</body>
+
+</html> -->

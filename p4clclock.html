@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+<link rel="stylesheet" href="clock.css">
+
+<!-- <style>
+    *{
+        margin: auto;
+        padding: auto;
+    }
+
+    .body{
+        background-color: yellow;
+    }
+    .container{
+        background:rgb(83, 81, 81);
+        border: 1px solid rgba(0, 0, 0, 0.009);
+        border-radius: 1.8rem;
+        height: 250px;
+        width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 10px 5px 5px rgb(190, 190, 185); ;
+    }
+
+    .clockholder{
+        background-color: rgb(146, 146, 146);
+height: 210px;
+width: 360px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 2rem;
+
+    }
+.maindiv{
+    background-color: rgb(215, 215, 215);
+    height: 150px;
+    width: 300px;
+    border-radius: 2.2rem;
+    display: flex;
+    justify-content: center;
+    box-shadow: darkseagreen;
+    align-items: center;
+
+}
+#clock{
+    height: 129px;
+    width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2.2rem;
+    background-color: rgba(255, 221, 0, 0.155),;
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-weight: bolder;
+    
+
+}
+
+
+
+</style> -->
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="clockholder">
+            <div class="timeholder">
+                <div class="timeoptions">
+                    <i class="fas fa-clock" data-title="TIME"></i>
+                    <i class="fas fa-stopwatch"data-title="STOPWATCH"></i>
+                    <i class="fas fa-clock"data-title="Count Down"></i>
+                </div>
+                <div class="maindiv">
+                    <p id="clock"> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const curtime=()=>{
+            let ctime=new Date().toLocaleTimeString();
+         document.getElementById("clock").innerText=ctime;
+        };
+        curtime();
+
+       const intervalID= setInterval(curtime,1000);
+       //to stp the watch after the specific time
+    //    setTimeout(()=> 
+    //     clearInterval(intervalID),5000
+    //     );
+    </script>
+</body>
+</html>

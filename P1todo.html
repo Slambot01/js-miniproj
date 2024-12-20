@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- ADD CSS TO IT -->
+<!-- ADD CSS TO IT -->
+<!-- ADD CSS TO IT -->
+<!-- ADD CSS TO IT -->
+<!-- ADD CSS TO IT -->
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>TODO LIST</h1>
+        <input type="text" id="inputfield" />
+
+        <button id="btn">Submit</button>
+        <div class="todoitems">
+            <p>----Tasks----</p>
+        </div>
+    </div>
+
+    <script>
+        let inputelem = document.getElementById('inputfield');
+        let submitbtn = document.querySelector("#btn");
+        let todoitems = document.querySelector('.todoitems');
+
+        const addto = () => {
+            let Txtcontainer = document.createElement("p");
+            Txtcontainer.textContent = inputelem.value;
+            console.log(Txtcontainer);
+            todoitems.append(Txtcontainer);
+            inputelem.value = null;
+        }
+        submitbtn.addEventListener('click', () => {
+            addto();
+        });
+
+        todoitems.addEventListener('click',(event)=>{
+            console.log(event.target);
+            let curelem=event.target;
+           curelem.remove();
+
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Wlc to DAD jokes</h1>
+<section class="api_body"></section>
+<button id="fetchjk">Get another joke</button>
+
+    </div>
+
+    <script>
+        const jokeBtn=document.getElementById("fetchjk");
+        const apiBody=document.querySelector(".api_body");
+
+const apiUrl="https://icanhazdadjoke.com/"; 
+async function fetchData(){
+    try{
+    const res =await fetch(apiUrl,{
+        headers:{
+            Accept:"application/json",
+
+            
+        },
+    })
+    const data=await res.json();
+    console.log(data.joke);
+    apiBody.innerHTML=data.joke;
+}
+catch(error){
+    apiBody.innerHTML=error;
+    console.log(error);
+}
+} 
+jokeBtn.addEventListener("click",fetchData);
+fetchData();
+</script>
+    
+</body>
+</html>

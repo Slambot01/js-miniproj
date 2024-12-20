@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <p id="countdown">0</p>
+        <div class="buttons">
+            <button class="start_btn">Start</button> 
+            <button class="reset_btn">Reset</button> 
+            <button class="time_btn">Stop</button> 
+            <button class="stop_btn">getTime</button> 
+            <button class="clear_btn">ClearTime</button> 
+        </div>
+        <div class="resetvalue"></div>
+    </section>
+    <script>
+        const countdownelement=document.getElementById("countdown");
+        const resetvalueelement= document.querySelector(".resetvalue");
+        let startcount=0;
+        let intervalID;
+
+const startTimer=()=>{
+    countdownelement.innerText=startcount++;
+    intervalID = setInterval(()=>{
+        countdownelement.innerText=startcount++
+;
+    },1000)
+};
+
+
+const stopTimer=()=>{
+    clearInterval(intervalID);
+
+};
+
+
+const resetTimer=()=>
+{startcount=0;
+    countdownelement.innerText=startcount;
+    clearInterval(intervalID);
+
+};
+
+const showsStopValue=()=>{
+const newpara=document.createElement("p");
+newpara.innerText=`The stop time is ${startcount-1}`;
+resetvalueelement.append(newpara);};
+
+const clearTimevalue=()=>{
+    resetvalueelement.innerHTML=" ";
+};
+
+        document.querySelector(".start_btn").addEventListener("click",startTimer);
+  document.querySelector(".reset_btn").addEventListener("click",resetTimer);
+        document.querySelector(".time_btn").addEventListener("click",stopTimer);
+      document.querySelector(".stop_btn").addEventListener("click",showsStopValue);
+        document.querySelector(".clear_btn").addEventListener("click",clearTimevalue);
+
+
+
+    </script>
+    
+</body>
+</html>

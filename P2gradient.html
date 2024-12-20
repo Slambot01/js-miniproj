@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn1{
+            background-color: whitesmoke;
+            width: 5rem;
+            border: 1px solid rgb(190, 190, 190);
+            border-radius: 4px;
+           box-shadow: 1px 2px 5px rgb(91, 91, 91); 
+        }
+        #btn2{
+            background-color: whitesmoke;
+            width: 5rem;
+            border: 1px solid rgb(190, 190, 190);
+            border-radius: 4px;
+           box-shadow: 1px 2px 5px rgb(91, 91, 91); 
+        }
+        /* .body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            box-shadow: 1px 2px 5px rgb(91, 91, 91);  
+            margin: 0 3rem;
+            padding: 5px;
+        }
+        *{
+            margin: 0 auto;
+            padding: 5px;
+            box-sizing: border-box;
+              */
+        /* } */
+        .buttons {
+            display: flex;
+            gap: 1rem; /* Add distance between buttons */
+        }
+        .container{
+            height: 35%;
+            width: 35%;
+            background-color: rgb(253, 253, 253);
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+            border-radius: 12px;
+            background: linear-gradient(to bottom, #4d4d4d, #a6a6a6);
+
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+            margin:  5rem;
+            padding: 5rem;
+            justify-content: center;
+            align-items: center;
+        }
+        .section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .copyCode{
+            border: 1px solid rgb(109, 109, 109);
+             box-shadow:1px 2px 5px rgb(65, 64, 64) 
+             ;
+             border-radius: 4px;
+             background-color: antiquewhite;
+        }
+        #cop-name{
+        color:wheat;
+          }
+    </style>
+</head>
+
+<body class="body">
+    <section class="section"> 
+        <div class="container">
+            <div class="buttons"> 
+                <button id="btn1">#051937</button>
+                <button id="btn2">#008793</button>
+            </div>
+            <h2 id="cop-name">Copy your code here</h2>
+    
+            <div class="copyCode">
+                background-image:
+                linear-gradient(to right, rgba(2,0,36 )  , rgba(9,9,121 )   );
+
+    </div>
+</div>
+    </section>
+ <script>
+let rgb1="#000";
+let rgb2="#444";
+    let button1=document.getElementById('btn1');
+    let button2=document.getElementById('btn2');
+    let copydiv=document.querySelector(".copyCode")
+
+const colorval=()=>{
+    let myhexvalues="0123456789abcdef";
+    let colors='#';
+
+    for(let i=0;i<6;i++){
+        // we're just doing the concatenation and printing it in console.
+       colors+=  (myhexvalues[Math.floor(Math.random()*16)]);
+    }
+    return colors
+}
+ const handlebtn1=()=>{
+    rgb1=colorval();
+    console.log(rgb1);
+    btn1.innerHTML=rgb1;
+
+   document.body.style.backgroundImage=`linear-gradient(to right, ${rgb1},${rgb2})`;
+    copydiv.innerHTML=
+    ` background-image:
+            linear-gradient(to right,${rgb1}, ${rgb2 } ))`;
+
+ } 
+;
+
+const handlebtn2=()=>{
+     rgb2=colorval();
+    console.log(rgb2);
+     btn2.innerHTML=rgb2;
+//     document.body.style.backgroundImage = `linear-gradient(to right, #444, ${colorcode2})`;
+document.body.style.backgroundImage=`linear-gradient(to right, ${rgb1}, ${rgb2})`;
+    copydiv.innerHTML=
+    ` background-image:
+            linear-gradient(to right,${rgb1}, ${rgb2})`;
+};
+
+button1.addEventListener('click',handlebtn1);
+button2.addEventListener('click',handlebtn2);
+
+copydiv.addEventListener('click',()=>{
+navigator.clipboard.writeText(copydiv.innerText);
+});
+
+
+
+ </script>
+</div>
+</body>
+
+</html>
+
+
+
+
+
+<!-- this is the polished gpt version
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Generator</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: #f3f3f3;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 1px 2px 5px rgba(91, 91, 91, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        button {
+            background-color: whitesmoke;
+            width: 5rem;
+            border: 1px solid rgb(190, 190, 190);
+            border-radius: 4px;
+            box-shadow: 1px 2px 5px rgb(91, 91, 91);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .copyCode {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgb(109, 109, 109);
+            border-radius: 4px;
+            box-shadow: 1px 2px 5px rgba(65, 64, 64, 0.5);
+            font-family: monospace;
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="buttons">
+            <button id="btn1">#051937</button>
+            <button id="btn2">#008793</button>
+        </div>
+        <h2>Copy your code here</h2>
+        <div class="copyCode" id="gradientCode">
+            background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+        </div>
+    </div>
+
+    <script>
+        const button1 = document.getElementById('btn1');
+        const button2 = document.getElementById('btn2');
+        const gradientCode = document.getElementById('gradientCode');
+
+        const handlebtn1 = () => {
+            let colorcode1 = '#';
+            for (let i = 0; i < 6; i++) {
+                colorcode1 += "0123456789abcdef"[Math.floor(Math.random() * 16)];
+            }
+            console.log(colorcode1);
+            updateBackground(colorcode1);
+        };
+
+        const handlebtn2 = () => {
+            let colorcode2 = '#';
+            for (let i = 0; i < 6; i++) {
+                colorcode2 += "0123456789abcdef"[Math.floor(Math.random() * 16)];
+            }
+            console.log(colorcode2);
+            updateBackground(null, colorcode2);
+        };
+
+        const updateBackground = (color1, color2) => {
+            const currentBackground = document.body.style.backgroundImage;
+            let newGradient;
+            if (color1) {
+                newGradient = `linear-gradient(to right, ${color1}, #444)`;
+            } else if (color2) {
+                newGradient = `linear-gradient(to right, #444, ${color2})`;
+            }
+            document.body.style.backgroundImage = newGradient;
+            gradientCode.textContent = `background-image: ${newGradient};`;
+        };
+
+        button1.addEventListener('click', handlebtn1);
+        button2.addEventListener('click', handlebtn2);
+    </script>
+</body>
+
+</html> -->
